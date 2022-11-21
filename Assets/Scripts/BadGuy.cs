@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BadGuy : MonoBehaviour
 {
-    public float speed = 2f;
+    public float speed = 0.3f;
 
-    private Vector3 target = new Vector3(0f, 0f, 0f);
+    private Vector3 towerCenter = new Vector3(0f, 0f, 0f);
 
     private Transform currPos;
 
@@ -14,13 +14,19 @@ public class BadGuy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 dir = target - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        
+        
+    }
+    void FixedUpdate()
+    {
+        Vector3 dir = towerCenter - transform.position;
+        this.transform.GetComponent<Rigidbody>().AddForce(dir * speed);
+        // rb.MovePosition(Vector3.zero);
     }
 }

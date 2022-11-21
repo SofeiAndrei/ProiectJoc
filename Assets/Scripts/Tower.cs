@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private int health = 5;
 
-    // Update is called once per frame
+    public void onTriggerEnter(Collider collider)
+    {
+        Debug.Log("coll");
+
+        if(collider.gameObject.tag == "enemy")
+        {
+            health -= 1;
+            Debug.Log(health);
+            Destroy(collider.gameObject);
+        }
+    }
     void Update()
     {
-        
     }
 }
