@@ -7,11 +7,11 @@ public class Tower : MonoBehaviour
     [SerializeField]
     private int health = 5;
 
-    public void onTriggerEnter(Collider collider)
+    public void OnTriggerEnter(Collider collider)
     {
         Debug.Log("coll");
 
-        if(collider.gameObject.tag == "enemy")
+        if(collider.tag == "enemy")
         {
             health -= 1;
             Debug.Log(health);
@@ -20,5 +20,9 @@ public class Tower : MonoBehaviour
     }
     void Update()
     {
+    }
+
+    void FixedUpdate(){
+
     }
 }
