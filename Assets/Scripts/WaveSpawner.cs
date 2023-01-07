@@ -19,7 +19,7 @@ public class WaveSpawner : MonoBehaviour
           StartCoroutine(SpawnWave());
           countdown = timeBetweenWaves;
         }
-        countdown -= Time.deltaTime / 10;
+        countdown -= Time.deltaTime / 2;
    }
 
    IEnumerator SpawnWave ()

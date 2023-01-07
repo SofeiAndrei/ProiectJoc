@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BadGuy : MonoBehaviour
 {
+    public float startHealth = 100;
+    private float health;
+    public Image healthBar;
+
     private int wayPointIndex = 0;
     private Transform target;
     public float speed = 0.3f;
@@ -14,9 +19,20 @@ public class BadGuy : MonoBehaviour
     void Start()
     {
         target = WayPoints.points[0];
+        health = startHealth;
     }
 
-    void Update()
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        healthBar.fillAmount = health / startHealth;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+        void Update()
     {
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
@@ -36,10 +52,16 @@ public class BadGuy : MonoBehaviour
         wayPointIndex++;
         target = WayPoints.points[wayPointIndex];
     }
-    // void FixedUpdate()
-    // {
-    //     Vector3 dir = towerCenter - transform.position;
-    //     this.transform.GetComponent<Rigidbody>().AddForce(dir * speed);
-    //     // rb.MovePosition(Vector3.zero);
-    // }
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
+
+        // void FixedUpdate()
+        // {
+        //     Vector3 dir = towerCenter - transform.position;
+        //     this.transform.GetComponent<Rigidbody>().AddForce(dir * speed);
+        //     // rb.MovePosition(Vector3.zero);
+        // }
 }
