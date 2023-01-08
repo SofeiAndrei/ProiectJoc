@@ -8,6 +8,7 @@ public class BadGuy : MonoBehaviour
     public float startHealth = 100;
     private float health;
     public Image healthBar;
+    public int moneyWorth;
 
     private int wayPointIndex = 0;
     private Transform target;
@@ -56,6 +57,7 @@ public class BadGuy : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
+        Currency.Money += moneyWorth;
     }
 
         // void FixedUpdate()
