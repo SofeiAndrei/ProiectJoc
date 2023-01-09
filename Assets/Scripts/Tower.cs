@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour
 {
     [SerializeField]
-    private int health = 5;
+    public int health = 15;
     public HealthBar healthBar;
     public void OnTriggerEnter(Collider collider)
     {

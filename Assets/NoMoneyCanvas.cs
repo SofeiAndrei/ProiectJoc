@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class NoMoneyCanvas : MonoBehaviour
 {
-    private float countdown = 1f;
+    private float countdown = 2f;
 
     
     // Update is called once per frame
     void Update()
     {
-        if (countdown <= 0f)
+        if (countdown <= 0f && gameObject != null)
         {
             Destroy(gameObject);
             countdown = 2f;

@@ -5,13 +5,14 @@ using UnityEngine;
 public class WaveSpawner : MonoBehaviour
 {
    public Transform enemyPrefab;
-
-   public Transform spawnPoint;
+   public Transform fastEnemyPrefab;
+    public System.Random ran = new System.Random();
+    public Transform spawnPoint;
 
    public float timeBetweenWaves = 5f;
    private float countdown = 1f;
 
-   private int waveIndex = 0;
+   private int waveIndex = 3;
    void Update ()
    {
         if (countdown <= 0f)
@@ -22,17 +23,42 @@ public class WaveSpawner : MonoBehaviour
         countdown -= Time.deltaTime / 2;
    }
 
-   IEnumerator SpawnWave ()
-   {
+    IEnumerator SpawnWave()
+    {
         waveIndex++;
-        for (int i = 0; i < waveIndex; i++)
+        if (waveIndex < 6)
         {
-          SpawnEnemy();
-          yield return new WaitForSeconds(2f);
+            for (int i = 0; i < waveIndex; i++)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < waveIndex; i++)
+            {
+                var randomSpawner = ran.Next(1, 4);
+
+                if (randomSpawner == 1 || randomSpawner == 2)
+                {
+                    SpawnEnemy();
+                }
+                else
+                {
+                    SpawnFastEnemy();
+                }
+                yield return new WaitForSeconds(1f);
+                Debug.Log(randomSpawner);
+            }
         }
    }
    void SpawnEnemy ()
    {
      Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
    }
+   void SpawnFastEnemy ()
+    {
+      Instantiate(fastEnemyPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
 }

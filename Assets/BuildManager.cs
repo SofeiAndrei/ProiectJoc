@@ -12,7 +12,7 @@ public class BuildManager : MonoBehaviour
     private ShopBlueprint balistaToBuild;
 
     public Text NoMoneyMessage;
-    private Vector3 NoMoneyMessageSpawn = new Vector3(0f, 0f, 0f);
+    private Vector3 NoMoneyMessageSpawn = new Vector3(0f, 40f, 0f);
 
     public GameObject Canvas;
 
@@ -38,11 +38,14 @@ public class BuildManager : MonoBehaviour
         if(Currency.Money < balistaToBuild.cost)
         {
             Debug.Log("Not enough money");
+            Text message = Instantiate(NoMoneyMessage, NoMoneyMessageSpawn, Quaternion.Euler(60f, 270f, 0f)) as Text;
+            message.transform.SetParent(Canvas.transform, false);
+
             ok = 0;
             return;
         }
         Currency.Money -= balistaToBuild.cost;
-        GameObject balista = (GameObject)Instantiate(balistaToBuild.prefab, NoMoneyMessageSpawn, Quaternion.Euler(60f,270f,0f));
+        GameObject balista = (GameObject)Instantiate(balistaToBuild.prefab, tile.GetBuildPosition(), Quaternion.identity);
         tile.balista = balista;
         ok = 0;
     }
