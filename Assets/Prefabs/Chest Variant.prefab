@@ -109,3 +109,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   moneyWorth: 25
+  moneyUI: {fileID: 9180070050034716097, guid: 1dff9fe3bdfd9144fb8531337a3aaf4e, type: 3}

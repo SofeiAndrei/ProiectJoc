@@ -40,7 +40,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 63827d73815de4d4d9eab784c067bee5, type: 3}
       propertyPath: m_Name
-      value: Balista
+      value: Balista Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 63827d73815de4d4d9eab784c067bee5, type: 3}
       propertyPath: m_RootOrder
@@ -52,7 +52,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 63827d73815de4d4d9eab784c067bee5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.85
+      value: 17.23
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 63827d73815de4d4d9eab784c067bee5, type: 3}
       propertyPath: m_LocalPosition.z

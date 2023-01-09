@@ -9,6 +9,7 @@ public class BadGuy : MonoBehaviour
     private float health;
     public Image healthBar;
     public int moneyWorth;
+    public GameObject moneyUI;
 
     private int wayPointIndex = 0;
     private Transform target;
@@ -33,7 +34,7 @@ public class BadGuy : MonoBehaviour
         }
     }
 
-        void Update()
+    void Update()
     {
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
@@ -58,12 +59,16 @@ public class BadGuy : MonoBehaviour
     {
         Destroy(gameObject);
         Currency.Money += moneyWorth;
+
+        var _moneyUI = moneyUI.GetComponent<MoneyUI>();
+        _moneyUI.KilledEnemies(moneyWorth);
+
     }
 
-        // void FixedUpdate()
-        // {
-        //     Vector3 dir = towerCenter - transform.position;
-        //     this.transform.GetComponent<Rigidbody>().AddForce(dir * speed);
-        //     // rb.MovePosition(Vector3.zero);
-        // }
+    // void FixedUpdate()
+    // {
+    //     Vector3 dir = towerCenter - transform.position;
+    //     this.transform.GetComponent<Rigidbody>().AddForce(dir * speed);
+    //     // rb.MovePosition(Vector3.zero);
+    // }
 }

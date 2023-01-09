@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildManager : MonoBehaviour
 {
@@ -10,7 +11,13 @@ public class BuildManager : MonoBehaviour
 
     private ShopBlueprint balistaToBuild;
 
+    public Text NoMoneyMessage;
+    private Vector3 NoMoneyMessageSpawn = new Vector3(0f, 0f, 0f);
+
+    public GameObject Canvas;
+
     public int ok = 0;
+    
 
     void Awake()
     {
@@ -21,7 +28,7 @@ public class BuildManager : MonoBehaviour
         }
         instance = this;
     }
-
+   
     public bool CanBuild
     {
         get{ return balistaToBuild != null; }
@@ -35,7 +42,7 @@ public class BuildManager : MonoBehaviour
             return;
         }
         Currency.Money -= balistaToBuild.cost;
-        GameObject balista = (GameObject)Instantiate(balistaToBuild.prefab, tile.GetBuildPosition(), Quaternion.identity);
+        GameObject balista = (GameObject)Instantiate(balistaToBuild.prefab, NoMoneyMessageSpawn, Quaternion.Euler(60f,270f,0f));
         tile.balista = balista;
         ok = 0;
     }
