@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 7;
+    public float startHealth = 15;
+    public float health;
     public Animator animator;
+    public Image healthBar;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        health = startHealth;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -40,5 +42,21 @@ public class Player : MonoBehaviour
         
         animator.SetFloat("vertical", Input.GetAxis("Vertical"));
         animator.SetFloat("horizontal", Input.GetAxis("Horizontal"));
+    }
+
+    public void OnTriggerEnter(Collider collider)
+    {
+        Debug.Log("coll with enemy soldier");
+
+        if(collider.tag == "enemy")
+        {
+            health -= 5;
+            healthBar.fillAmount = health / startHealth;
+            
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

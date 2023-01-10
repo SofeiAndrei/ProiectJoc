@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     private bool gameEnded = false;
     public Tower tower;
+    public Player player;
 
     public GameObject gameOverUI;
     public Transform towerRuins;
@@ -14,12 +15,10 @@ public class GameManager : MonoBehaviour
     {
         if (gameEnded)
             return;
-        if (tower.health <= 0)
+        if (tower.health <= 0 || player.health <=0 )
         {
             Instantiate(towerRuins, towerRuins.position, towerRuins.rotation);
             EndGame();
-            
-            
         }
         //to toggle the game over screen for easier testing 
 

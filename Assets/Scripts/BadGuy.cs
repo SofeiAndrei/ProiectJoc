@@ -20,7 +20,7 @@ public class BadGuy : MonoBehaviour
 
     void Start()
     {
-        target = WayPoints.points[0];
+        target = WayPoints.points[1];
         health = startHealth;
     }
 

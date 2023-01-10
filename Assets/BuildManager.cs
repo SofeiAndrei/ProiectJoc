@@ -18,7 +18,8 @@ public class BuildManager : MonoBehaviour
 
     public int ok = 0;
     
-
+    public Transform soldierPrefab;
+    public Transform spawnPoint;
     void Awake()
     {
         if (instance != null)
@@ -49,9 +50,26 @@ public class BuildManager : MonoBehaviour
         tile.balista = balista;
         ok = 0;
     }
+    
     public void SelectBalistaToBuild(ShopBlueprint balista)
     {
         balistaToBuild = balista;
     }
 
+    public void SpawnSoldier(ShopBlueprint soldier)
+    {
+        if(Currency.Money < soldier.cost)
+        {
+            Debug.Log("Not enough money");
+            Text message = Instantiate(NoMoneyMessage, NoMoneyMessageSpawn, Quaternion.Euler(60f, 270f, 0f)) as Text;
+            message.transform.SetParent(Canvas.transform, false);
+            return;
+        }
+        else
+        {
+            Vector3 correctSpawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y + 3, spawnPoint.position.z);
+            Instantiate(soldierPrefab, correctSpawnPosition, spawnPoint.rotation);
+            Currency.Money -= soldier.cost;
+        }
+    }
 }

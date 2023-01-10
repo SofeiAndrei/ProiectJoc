@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BadGuy
+  m_Name: FriendlyTroop
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -106,8 +106,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.7075472, g: 0.6424312, b: 0.09678713, a: 1}
-    - _Color: {r: 0.7075471, g: 0.6424312, b: 0.0967871, a: 1}
+    - _BaseColor: {r: 0.12431206, g: 0.09019608, b: 0.34509805, a: 1}
+    - _Color: {r: 0.124312006, g: 0.090196066, b: 0.34509802, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

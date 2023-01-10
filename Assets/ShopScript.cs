@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopScript : MonoBehaviour
 {
     public ShopBlueprint balista;
+    public ShopBlueprint soldier;
     BuildManager buildManager;
 
     void Start()
@@ -15,6 +16,10 @@ public class ShopScript : MonoBehaviour
     {
         buildManager.ok = 1;
         buildManager.SelectBalistaToBuild(balista);
+    }
+    public void PurchaseSoldier()
+    {
+        buildManager.SpawnSoldier(soldier);
     }
         
 }
