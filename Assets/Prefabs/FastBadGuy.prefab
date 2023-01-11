@@ -115,8 +115,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startHealth: 100
   healthBar: {fileID: 2091143366655274977}
-  moneyWorth: 35
+  moneyWorth: 25
+  scoreWorth: 120
   moneyUI: {fileID: 9180070050034716097, guid: 1dff9fe3bdfd9144fb8531337a3aaf4e, type: 3}
+  scoreUI: {fileID: 9180070050034716097, guid: 5a8bbab608a35d645812328513837fd1, type: 3}
   speed: 20
 --- !u!54 &3479511229700194083
 Rigidbody:

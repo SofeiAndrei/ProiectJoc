@@ -69,8 +69,8 @@ public class BuildManager : MonoBehaviour
         }
         else
         {
-            Vector3 correctSpawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y + 3, spawnPoint.position.z);
-            Instantiate(soldierPrefab, correctSpawnPosition, spawnPoint.rotation);
+            Vector3 correctSpawnPosition = new Vector3(spawnPoint.position.x, spawnPoint.position.y + 1, spawnPoint.position.z);
+            Instantiate(soldierPrefab, correctSpawnPosition, Quaternion.Euler(0f, 0f, 0f));
             Currency.Money -= soldier.cost;
         }
     }

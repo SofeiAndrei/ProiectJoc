@@ -9,7 +9,9 @@ public class BadGuy : MonoBehaviour
     private float health;
     public Image healthBar;
     public int moneyWorth;
+    public int scoreWorth;
     public GameObject moneyUI;
+    public GameObject scoreUI;
 
     private int wayPointIndex = 0;
     private Transform target;
@@ -46,6 +48,16 @@ public class BadGuy : MonoBehaviour
     }
     void GetNextWayPoint()
     {
+        if (wayPointIndex == WayPoints.points.Length - 2 || wayPointIndex == WayPoints.points.Length - 4)
+        {
+            transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+        }
+        else
+        if (wayPointIndex == WayPoints.points.Length - 3)
+        {
+            transform.Rotate(0.0f, -90.0f, 0.0f, Space.Self);
+        }
+
         if (wayPointIndex >= WayPoints.points.Length - 1)
         {
             Destroy(gameObject);
@@ -62,6 +74,10 @@ public class BadGuy : MonoBehaviour
 
         var _moneyUI = moneyUI.GetComponent<MoneyUI>();
         _moneyUI.KilledEnemies(moneyWorth);
+
+        Score.score += scoreWorth;
+        var _scoreUI = scoreUI.GetComponent<ScoreUI>();
+        _scoreUI.KilledEnemies(scoreWorth);
 
     }
 

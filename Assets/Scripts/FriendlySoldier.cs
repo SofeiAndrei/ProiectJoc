@@ -20,7 +20,6 @@ public class FriendlySoldier : MonoBehaviour
     {
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
         if (Vector3.Distance(transform.position, target.position) <= 0.5f)
         {
             GetNextWayPoint();
@@ -29,6 +28,16 @@ public class FriendlySoldier : MonoBehaviour
 
     void GetNextWayPoint()
     {
+        if (wayPointIndex == WayPoints.points.Length - 2 || wayPointIndex == WayPoints.points.Length - 4)
+        {
+            transform.Rotate(0.0f, -90.0f, 0.0f, Space.Self);
+        }
+        else
+        if (wayPointIndex == WayPoints.points.Length - 3)
+        {
+            transform.Rotate(0.0f, 90.0f, 0.0f, Space.Self);
+        }
+        
         if (wayPointIndex <= 0)
         {
             Destroy(gameObject);
