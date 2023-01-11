@@ -6,6 +6,7 @@ public class ShopScript : MonoBehaviour
 {
     public ShopBlueprint balista;
     public ShopBlueprint soldier;
+    public ShopBlueprint tower;
     BuildManager buildManager;
 
     void Start()
@@ -21,5 +22,9 @@ public class ShopScript : MonoBehaviour
     {
         buildManager.SpawnSoldier(soldier);
     }
-        
+    public void RepairTower()
+    {
+        buildManager.RepairTower(tower);
+    }
+
 }

@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3238808357059658285
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 230
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.61237246
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.3535534
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.61237246
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.3535534
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -18.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441300, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441301, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_Name
+      value: TowerHealthMessage Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3465114325800441307, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
+        type: 3}
+      propertyPath: m_Text
+      value: Tower health already full!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 810fc2ec9157acc4e8178a9a3a885ad6, type: 3}

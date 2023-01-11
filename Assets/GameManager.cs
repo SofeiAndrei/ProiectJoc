@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
 {
     private bool gameEnded = false;
     public Tower tower;
+    public EnemyTowerScript enemyTower;
+    public Transform start;
     public Player player;
+    Vector3 enemyRuinsPos = new Vector3(-69, 2, 30);
 
     public GameObject gameOverUI;
     public Transform towerRuins;
@@ -20,6 +23,12 @@ public class GameManager : MonoBehaviour
             Instantiate(towerRuins, towerRuins.position, towerRuins.rotation);
             EndGame();
         }
+
+        if (enemyTower.health <= 0)
+        {
+            Instantiate(towerRuins, enemyRuinsPos, Quaternion.Euler(0f, 0f, 0f));
+            EndGame();
+        }
         //to toggle the game over screen for easier testing 
 
         if (Input.GetKeyDown("e"))
@@ -29,6 +38,12 @@ public class GameManager : MonoBehaviour
     }
 
     void EndGame()
+    {
+        gameEnded = true;
+        gameOverUI.SetActive(true);
+    }
+
+    void Victory()
     {
         gameEnded = true;
         gameOverUI.SetActive(true);

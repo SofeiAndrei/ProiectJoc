@@ -2,18 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour
+public class EnemyTowerScript : MonoBehaviour
 {
     [SerializeField]
     public int health = 15;
-    public int initialHealth;
     public HealthBar healthBar;
-    public Player player;
     public void OnTriggerEnter(Collider collider)
     {
         Debug.Log("coll");
 
-        if(collider.tag == "enemy")
+        if (collider.tag == "friendly_soldier")
         {
             health -= 1;
             healthBar.SetHealth(health);
@@ -25,17 +23,17 @@ public class Tower : MonoBehaviour
     void Start()
     {
         healthBar.SetMaxHealth(health);
-        initialHealth = health;
     }
     void Update()
     {
-        if (health <= 0 || player.health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
     }
 
-    void FixedUpdate(){
+    void FixedUpdate()
+    {
 
     }
 }
