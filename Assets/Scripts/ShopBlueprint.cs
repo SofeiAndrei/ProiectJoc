@@ -6,4 +6,10 @@ public class ShopBlueprint {
 
     public GameObject prefab;
     public int cost;
+
+    public GameObject fireRateUpgradedPrefab;
+    public GameObject rangeUpgradedPrefab;
+    public GameObject bothUpgradedPrefab;
+    public int upgradeFireRateCost;
+    public int upgradeRangeCost;
 }

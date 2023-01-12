@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,9 @@ public class BuildManager : MonoBehaviour
     public Tower myTower;
 
     private ShopBlueprint balistaToBuild;
+    private TileScript selectedNode;
+
+    public NodeUI nodeUI;
 
     public Text NoMoneyMessage;
     public Text TowerHealthMessage;
@@ -32,30 +36,43 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
+    public Vector3 getNoMoneyMessageSpawn()
+    {
+        return NoMoneyMessageSpawn;
+    }
+    public ShopBlueprint getBalistaToBuild()
+    {
+        return balistaToBuild;
+    }
+
     public bool CanBuild
     {
         get { return balistaToBuild != null; }
     }
-    public void BuildBalistaOn(TileScript tile)
+    public void SelectNode(TileScript node)
     {
-        if (Currency.Money < balistaToBuild.cost)
+        if(selectedNode == node)
         {
-            Debug.Log("Not enough money");
-            Text message = Instantiate(NoMoneyMessage, NoMoneyMessageSpawn, Quaternion.Euler(60f, 270f, 0f)) as Text;
-            message.transform.SetParent(Canvas.transform, false);
-
-            ok = 0;
+            DeselectNode();
             return;
         }
-        Currency.Money -= balistaToBuild.cost;
-        GameObject balista = (GameObject)Instantiate(balistaToBuild.prefab, tile.GetBuildPosition(), Quaternion.identity);
-        tile.balista = balista;
-        ok = 0;
+
+        selectedNode = node;
+        balistaToBuild = null;
+
+        nodeUI.SetTarget(node);
+    }
+
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        nodeUI.Hide();
     }
 
     public void SelectBalistaToBuild(ShopBlueprint balista)
     {
         balistaToBuild = balista;
+        DeselectNode();
     }
 
     public void SpawnSoldier(ShopBlueprint soldier)
