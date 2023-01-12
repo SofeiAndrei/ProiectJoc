@@ -13,27 +13,64 @@ public class HighScoreScript : MonoBehaviour
     private void Awake()
     {
         entryContainer = transform.Find("HighScoreEntryContainer");
-        entryTemplate = entryContainer.Find("HighScoreEntryTemplate");
+        if (entryContainer != null)
+        {
+            entryTemplate = entryContainer.Find("HighScoreEntryTemplate");
 
-        entryTemplate.gameObject.SetActive(false);
+            entryTemplate.gameObject.SetActive(false);
 
-        string jsonString = PlayerPrefs.GetString("highscoreTable");
-        HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
-        highScoreEntryList = highScores.highScoreEntryList;
-        //Sorting the entries
-        for(int i = 0; i < highScoreEntryList.Count; i++){
-            for(int j = i + 1; j < highScoreEntryList.Count; j++){
-                if(highScoreEntryList[j].score > highScoreEntryList[i].score){
-                    HighScoreEntry temp = highScoreEntryList[j];
-                    highScoreEntryList[j] = highScoreEntryList[i];
-                    highScoreEntryList[i] = temp;
+            string jsonString = PlayerPrefs.GetString("highscoreTable", "");
+            if (jsonString == "")
+            {
+                highScoreEntryList = new List<HighScoreEntry>()
+                {
+                    new HighScoreEntry{ score = 0, name = "NONE"},
+                    new HighScoreEntry{ score = 0, name = "NONE"},
+                    new HighScoreEntry{ score = 0, name = "NONE"},
+                    new HighScoreEntry{ score = 0, name = "NONE"},
+                    new HighScoreEntry{ score = 0, name = "NONE"},
+                    new HighScoreEntry{ score = 0, name = "NONE"},
+                    new HighScoreEntry{ score = 0, name = "NONE"},
+                    new HighScoreEntry{ score = 0, name = "NONE"},
+                    new HighScoreEntry{ score = 0, name = "NONE"},
+                    new HighScoreEntry{ score = 0, name = "NONE"},
+                };
+
+                highScoreEntryTransformList = new List<Transform>();
+                foreach (HighScoreEntry highScoreEntry in highScoreEntryList)
+                {
+                    CreateHighScoreEntryTransform(highScoreEntry, entryContainer, highScoreEntryTransformList);
+                }
+
+                string json = JsonUtility.ToJson(highScoreEntryList);
+                PlayerPrefs.SetString("highscoreTable", json);
+                PlayerPrefs.Save();
+                Debug.Log(PlayerPrefs.GetString("highscoreTable"));
+            }
+            else
+            {
+                HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
+                highScoreEntryList = highScores.highScoreEntryList;
+                //Sorting the entries
+                for (int i = 0; i < highScoreEntryList.Count; i++)
+                {
+                    for (int j = i + 1; j < highScoreEntryList.Count; j++)
+                    {
+                        if (highScoreEntryList[j].score > highScoreEntryList[i].score)
+                        {
+                            HighScoreEntry temp = highScoreEntryList[j];
+                            highScoreEntryList[j] = highScoreEntryList[i];
+                            highScoreEntryList[i] = temp;
+                        }
+                    }
+                }
+
+                highScoreEntryTransformList = new List<Transform>();
+                foreach (HighScoreEntry highScoreEntry in highScoreEntryList)
+                {
+                    CreateHighScoreEntryTransform(highScoreEntry, entryContainer, highScoreEntryTransformList);
                 }
             }
-        }
-
-        highScoreEntryTransformList = new List<Transform>();
-        foreach(HighScoreEntry highScoreEntry in highScoreEntryList) {
-            CreateHighScoreEntryTransform(highScoreEntry, entryContainer, highScoreEntryTransformList);
         }
     }
 
@@ -77,11 +114,38 @@ public class HighScoreScript : MonoBehaviour
         HighScoreEntry highScoreEntry = new HighScoreEntry { score = score, name = name };
 
         //Load HighScores
-        string jsonString = PlayerPrefs.GetString("highscoreTable");
+        string jsonString = PlayerPrefs.GetString("highscoreTable", "");
         HighScores highScores = JsonUtility.FromJson<HighScores>(jsonString);
 
-        //Add New HighScore
-        highScores.highScoreEntryList.Add(highScoreEntry);
+        highScoreEntryList = highScores.highScoreEntryList;
+        if(highScoreEntryList.Count >= 10) 
+        {
+            //Check if the leaderboard is full and the current score is higher than the lowest score on the leaderboard to replace it
+            //Sorting the entries
+            for (int i = 0; i < highScoreEntryList.Count; i++)
+            {
+                for (int j = i + 1; j < highScoreEntryList.Count; j++)
+                {
+                    if (highScoreEntryList[j].score > highScoreEntryList[i].score)
+                    {
+                        HighScoreEntry temp = highScoreEntryList[j];
+                        highScoreEntryList[j] = highScoreEntryList[i];
+                        highScoreEntryList[i] = temp;
+                    }
+                }
+            }
+
+            if(score > highScoreEntryList[highScoreEntryList.Count - 1].score)
+            {
+                highScoreEntryList[highScoreEntryList.Count - 1].score = score;
+                highScoreEntryList[highScoreEntryList.Count - 1].name = name;
+            }
+        }
+        else
+        {
+            //Add New HighScore
+            highScores.highScoreEntryList.Add(highScoreEntry);
+        }
 
         //Save HighScores
         string json = JsonUtility.ToJson(highScores);
