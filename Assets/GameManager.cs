@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     {
         if (gameEnded)
             return;
-        if (tower.health <= 0 || player.health <=0 )
+        if (tower.health <= 0 || player.health <= 0 )
         {
             Instantiate(towerRuins, towerRuins.position, towerRuins.rotation);
             EndGame();
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         if (enemyTower.health <= 0)
         {
             Instantiate(towerRuins, enemyRuinsPos, Quaternion.Euler(0f, 0f, 0f));
-            EndGame();
+            Victory();
         }
         //to toggle the game over screen for easier testing 
 
@@ -40,12 +40,14 @@ public class GameManager : MonoBehaviour
     void EndGame()
     {
         gameEnded = true;
-        gameOverUI.SetActive(true);
+        gameOverUI.SetActive(true);   
+        AudioManager.Instance.PlaySFX("lose");
     }
 
     void Victory()
     {
         gameEnded = true;
         gameOverUI.SetActive(true);
+        AudioManager.Instance.PlaySFX("win");
     }
 }
