@@ -24,7 +24,7 @@ public class WaveSpawner : MonoBehaviour
         }
         countdown -= Time.deltaTime / 2;
 
-        if (Input.GetKeyDown("p"))
+        if (Input.GetKeyDown("o"))
         {
             PauseEnemySpawning();
         }

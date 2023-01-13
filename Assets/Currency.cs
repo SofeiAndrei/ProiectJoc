@@ -11,4 +11,11 @@ public class Currency : MonoBehaviour
     {
         Money = startMoney;
     }
+    void Update()
+    {
+        if (Input.GetKeyDown("m"))
+        {
+            Money += 1000;
+        }
+    }
 }
