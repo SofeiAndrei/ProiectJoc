@@ -51,7 +51,7 @@ public class TileScript : MonoBehaviour
     void OnMouseDown()
     {
 
-        if (balista != null || transform.position.x < -28)
+        if (balista != null)
         {
             //Debug.Log("Can't build here");
             buildManager.SelectNode(this);
@@ -112,7 +112,7 @@ public class TileScript : MonoBehaviour
         Destroy(balista);
 
         //O instantiaza pe cea noua
-
+ 
         if (!fireRateIsUpgraded && !rangeIsUpgraded)
         {
             GameObject _balista = (GameObject)Instantiate(shopBlueprint.fireRateUpgradedPrefab, GetBuildPosition(), Quaternion.identity);
