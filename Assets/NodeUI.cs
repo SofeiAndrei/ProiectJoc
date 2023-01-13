@@ -15,7 +15,8 @@ public class NodeUI : MonoBehaviour
 
         transform.position = target.GetBuildPosition();
 
-        ui.SetActive(true);
+        if(target.balista != null)
+            ui.SetActive(true);
     }
 
     public void Hide()

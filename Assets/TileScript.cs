@@ -20,6 +20,8 @@ public class TileScript : MonoBehaviour
     [HideInInspector]
     public bool fireRateIsUpgraded = false;
     public bool rangeIsUpgraded = false;
+    private Vector3 NoMoreUpgradesAllowedSpawn = new Vector3(0f, 40f, 0f);
+
     void Start()
     {
         rend = GetComponent<Renderer>();
@@ -95,13 +97,23 @@ public class TileScript : MonoBehaviour
             buildManager.ok = 0;
             return;
         }
+
+        if (fireRateIsUpgraded)
+        {
+            Debug.Log("Cannot upgrade fire rate more than once");
+            Text message = Instantiate(buildManager.NoMoreUpgradesAllowed, NoMoreUpgradesAllowedSpawn, Quaternion.Euler(60f, 270f, 0f)) as Text;
+            message.transform.SetParent(buildManager.Canvas.transform, false);
+            return;
+        }
+
         Currency.Money -= shopBlueprint.upgradeFireRateCost;
 
         //Sterge balista veche
         Destroy(balista);
 
         //O instantiaza pe cea noua
-        if(!fireRateIsUpgraded && !rangeIsUpgraded)
+
+        if (!fireRateIsUpgraded && !rangeIsUpgraded)
         {
             GameObject _balista = (GameObject)Instantiate(shopBlueprint.fireRateUpgradedPrefab, GetBuildPosition(), Quaternion.identity);
             balista = _balista;
@@ -113,11 +125,6 @@ public class TileScript : MonoBehaviour
             GameObject _balista = (GameObject)Instantiate(shopBlueprint.bothUpgradedPrefab, GetBuildPosition(), Quaternion.identity);
             balista = _balista;
             buildManager.ok = 0;
-        }
-
-        else
-        {
-            return;
         }
 
         fireRateIsUpgraded = true;
@@ -135,6 +142,15 @@ public class TileScript : MonoBehaviour
             buildManager.ok = 0;
             return;
         }
+
+        if (rangeIsUpgraded)
+        {
+            Debug.Log("Cannot upgrade range more than once");
+            Text message = Instantiate(buildManager.NoMoreUpgradesAllowed, NoMoreUpgradesAllowedSpawn, Quaternion.Euler(60f, 270f, 0f)) as Text;
+            message.transform.SetParent(buildManager.Canvas.transform, false);
+            return;
+        }
+
         Currency.Money -= shopBlueprint.upgradeRangeCost;
 
         //Sterge balista veche
@@ -153,11 +169,6 @@ public class TileScript : MonoBehaviour
             GameObject _balista = (GameObject)Instantiate(shopBlueprint.bothUpgradedPrefab, GetBuildPosition(), Quaternion.identity);
             balista = _balista;
             buildManager.ok = 0;
-        }
-
-        else
-        {
-            return;
         }
 
         rangeIsUpgraded = true;

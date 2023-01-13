@@ -56819,6 +56819,8 @@ MonoBehaviour:
     type: 3}
   myTower: {fileID: 684628675}
   nodeUI: {fileID: 1747967545}
+  NoMoreUpgradesAllowed: {fileID: 3465114325800441307, guid: ed7cd63c919da1241809c01b716ad884,
+    type: 3}
   NoMoneyMessage: {fileID: 3465114325800441307, guid: 810fc2ec9157acc4e8178a9a3a885ad6,
     type: 3}
   TowerHealthMessage: {fileID: 2081789016829089782, guid: 9824b920b79699c468b97669c5d71e03,

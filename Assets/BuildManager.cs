@@ -16,6 +16,7 @@ public class BuildManager : MonoBehaviour
 
     public NodeUI nodeUI;
 
+    public Text NoMoreUpgradesAllowed;
     public Text NoMoneyMessage;
     public Text TowerHealthMessage;
     private Vector3 NoMoneyMessageSpawn = new Vector3(0f, 40f, 0f);
