@@ -27,6 +27,7 @@ public class BuildManager : MonoBehaviour
 
     public Transform soldierPrefab;
     public Transform spawnPoint;
+    public GameObject sellEffect;
     void Awake()
     {
         if (instance != null)
@@ -57,7 +58,7 @@ public class BuildManager : MonoBehaviour
             DeselectNode();
             return;
         }
-        if (node.transform.position.x > -28)
+        if (node.transform.position.x >= -28)
         {
             selectedNode = node;
             balistaToBuild = null;

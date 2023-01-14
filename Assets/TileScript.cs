@@ -89,7 +89,17 @@ public class TileScript : MonoBehaviour
         }
     }
 
-    public void upgradeBalistaFireRate()
+    public void SellBalista()
+    {
+        Currency.Money += 50;
+        GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
+        Destroy(effect, 5f);
+        Destroy(balista);
+        //blueprint = null;
+
+    }
+
+    public void UpgradeBalistaFireRate()
     {
         if (Currency.Money < shopBlueprint.upgradeFireRateCost)
         {
@@ -134,7 +144,7 @@ public class TileScript : MonoBehaviour
 
     }
 
-    public void upgradeBalistaRange()
+    public void UpgradeBalistaRange()
     {
         if (Currency.Money < shopBlueprint.upgradeRangeCost)
         {
