@@ -89,6 +89,7 @@ public class TileScript : MonoBehaviour
         }
     }
 
+
     public void SellBalista()
     {
         Currency.Money += 50;
@@ -125,7 +126,6 @@ public class TileScript : MonoBehaviour
         Destroy(balista);
 
         //O instantiaza pe cea noua
- 
         if (!fireRateIsUpgraded && !rangeIsUpgraded)
         {
             GameObject _balista = (GameObject)Instantiate(shopBlueprint.fireRateUpgradedPrefab, GetBuildPosition(), Quaternion.identity);
