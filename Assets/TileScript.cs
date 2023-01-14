@@ -89,7 +89,7 @@ public class TileScript : MonoBehaviour
         }
     }
 
-    public void upgradeBalistaFireRate()
+    public void UpgradeBalistaFireRate()
     {
         if (Currency.Money < shopBlueprint.upgradeFireRateCost)
         {
@@ -115,7 +115,6 @@ public class TileScript : MonoBehaviour
         Destroy(balista);
 
         //O instantiaza pe cea noua
- 
         if (!fireRateIsUpgraded && !rangeIsUpgraded)
         {
             GameObject _balista = (GameObject)Instantiate(shopBlueprint.fireRateUpgradedPrefab, GetBuildPosition(), Quaternion.identity);
@@ -134,7 +133,7 @@ public class TileScript : MonoBehaviour
 
     }
 
-    public void upgradeBalistaRange()
+    public void UpgradeBalistaRange()
     {
         if (Currency.Money < shopBlueprint.upgradeRangeCost)
         {

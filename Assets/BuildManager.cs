@@ -57,7 +57,7 @@ public class BuildManager : MonoBehaviour
             DeselectNode();
             return;
         }
-        if (node.transform.position.x > -28)
+        if (node.transform.position.x >= -28)
         {
             selectedNode = node;
             balistaToBuild = null;

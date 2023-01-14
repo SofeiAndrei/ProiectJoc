@@ -26,13 +26,13 @@ public class NodeUI : MonoBehaviour
 
     public void UpgradeFireRate()
     {
-        target.upgradeBalistaFireRate();
+        target.UpgradeBalistaFireRate();
         BuildManager.instance.DeselectNode();
     }
 
     public void UpgradeRange()
     {
-        target.upgradeBalistaRange();
+        target.UpgradeBalistaRange();
         BuildManager.instance.DeselectNode();
     }
 
