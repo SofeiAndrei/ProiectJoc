@@ -12,10 +12,12 @@ public class BadGuy : MonoBehaviour
     public int scoreWorth;
     public GameObject moneyUI;
     public GameObject scoreUI;
-
+    Animator animator;
+    Collider m_Collider;
     private int wayPointIndex = 0;
     private Transform target;
     public float speed = 0.3f;
+    public bool isAttacking = false;
     private Vector3 towerCenter = new Vector3(0f, 0f, 0f);
 
     private Transform currPos;
@@ -24,6 +26,8 @@ public class BadGuy : MonoBehaviour
     {
         target = WayPoints.points[1];
         health = startHealth;
+        animator = this.GetComponent<Animator>();
+        m_Collider = GetComponent<Collider>();
     }
 
     public void TakeDamage(int amount)
@@ -38,12 +42,15 @@ public class BadGuy : MonoBehaviour
 
     void Update()
     {
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-
-        if (Vector3.Distance(transform.position, target.position) <= 0.5f)
+        if (!isAttacking)
         {
-            GetNextWayPoint();
+            Vector3 dir = target.position - transform.position;
+            transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+
+            if (Vector3.Distance(transform.position, target.position) <= 0.5f)
+            {
+                GetNextWayPoint();
+            }
         }
     }
     void GetNextWayPoint()
@@ -79,6 +86,18 @@ public class BadGuy : MonoBehaviour
         var _scoreUI = scoreUI.GetComponent<ScoreUI>();
         _scoreUI.KilledEnemies(scoreWorth);
 
+    }
+
+    public void OnTriggerEnter(Collider collider)
+    {
+        Debug.Log("coll with friendly soldier");
+
+        if (collider.tag == "friendly_soldier")
+        {
+            isAttacking = true;
+            m_Collider.enabled = false;
+            animator.SetInteger("isAttacking", 1);
+        }
     }
 
     // void FixedUpdate()

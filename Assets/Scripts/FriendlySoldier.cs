@@ -8,21 +8,29 @@ public class FriendlySoldier : MonoBehaviour
     private Transform target;
     public float speed = 0.3f;
     private Vector3 towerCenter = new Vector3(0f, 0f, 0f);
+    private bool isAttacking = false;
+    Collider m_Collider;
+    Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         target = WayPoints.points[WayPoints.points.Length - 2];
         wayPointIndex = WayPoints.points.Length - 1;
+        animator = this.GetComponent<Animator>();
+        m_Collider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-        if (Vector3.Distance(transform.position, target.position) <= 0.5f)
+        if(!isAttacking)
         {
-            GetNextWayPoint();
+            Vector3 dir = target.position - transform.position;
+            transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+            if (Vector3.Distance(transform.position, target.position) <= 0.5f)
+            {
+                GetNextWayPoint();
+            }
         }
     }
 
@@ -47,14 +55,21 @@ public class FriendlySoldier : MonoBehaviour
         target = WayPoints.points[wayPointIndex];
     }
 
-    public void OnTriggerEnter(Collider collider)
+    public IEnumerator OnTriggerEnter(Collider collider)
     {
         Debug.Log("coll with enemy soldier");
 
         if(collider.tag == "enemy")
         {
-            Destroy(collider.gameObject);
+            isAttacking = true;
+            animator.SetInteger("isAttacking", 1);
+            m_Collider.enabled = false;
+            yield return new WaitForSeconds(1.5f);
             Die();
+            Destroy(collider.gameObject);
+            
+
+
         }
     }
     

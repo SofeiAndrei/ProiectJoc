@@ -11,6 +11,7 @@ public class TileScript : MonoBehaviour
     public Color WrongHoverColor;
     private Renderer rend;
     private Color startColor;
+    public int balistaValue = 50;
    
     BuildManager buildManager;
     [HideInInspector]
@@ -92,7 +93,7 @@ public class TileScript : MonoBehaviour
 
     public void SellBalista()
     {
-        Currency.Money += 50;
+        Currency.Money += balistaValue;
         GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5f);
         Destroy(balista);
@@ -119,7 +120,7 @@ public class TileScript : MonoBehaviour
             message.transform.SetParent(buildManager.Canvas.transform, false);
             return;
         }
-
+        balistaValue += 50;
         Currency.Money -= shopBlueprint.upgradeFireRateCost;
 
         //Sterge balista veche
@@ -163,7 +164,7 @@ public class TileScript : MonoBehaviour
             message.transform.SetParent(buildManager.Canvas.transform, false);
             return;
         }
-
+        balistaValue += 50;
         Currency.Money -= shopBlueprint.upgradeRangeCost;
 
         //Sterge balista veche

@@ -49,7 +49,10 @@ public class ArrowScript : MonoBehaviour
 
         if (e != null)
         {
-            e.TakeDamage(damage);
+            if(e.isAttacking == false)
+            {
+                e.TakeDamage(damage);
+            }
         }
     }
 
