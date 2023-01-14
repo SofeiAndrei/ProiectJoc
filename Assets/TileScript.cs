@@ -51,7 +51,7 @@ public class TileScript : MonoBehaviour
     void OnMouseDown()
     {
 
-        if (balista != null)
+        if (balista != null || transform.position.x < -28)
         {
             //Debug.Log("Can't build here");
             buildManager.SelectNode(this);
@@ -76,14 +76,17 @@ public class TileScript : MonoBehaviour
             buildManager.ok = 0;
             return;
         }
-        Currency.Money -= blueprint.cost;
+        if (buildManager.ok == 1)
+        {
+            Currency.Money -= blueprint.cost;
 
-        GameObject _balista = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
-        balista = _balista;
+            GameObject _balista = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+            balista = _balista;
 
-        shopBlueprint = blueprint;
+            shopBlueprint = blueprint;
 
-        buildManager.ok = 0;
+            buildManager.ok = 0;
+        }
     }
 
     public void upgradeBalistaFireRate()

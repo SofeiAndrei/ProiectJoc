@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     Vector3 enemyRuinsPos = new Vector3(-69, 2, 30);
 
     public GameObject gameOverUI;
+    public GameObject gameWonUI;
     public Transform towerRuins;
 
     void Update()
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
     void Victory()
     {
         gameEnded = true;
-        gameOverUI.SetActive(true);
+        gameWonUI.SetActive(true);
         AudioManager.Instance.PlaySFX("win");
     }
 }

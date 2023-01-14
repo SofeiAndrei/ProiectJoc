@@ -57,11 +57,13 @@ public class BuildManager : MonoBehaviour
             DeselectNode();
             return;
         }
+        if (node.transform.position.x > -28)
+        {
+            selectedNode = node;
+            balistaToBuild = null;
 
-        selectedNode = node;
-        balistaToBuild = null;
-
-        nodeUI.SetTarget(node);
+            nodeUI.SetTarget(node);
+        }
     }
 
     public void DeselectNode()
