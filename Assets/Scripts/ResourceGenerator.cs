@@ -24,7 +24,29 @@ public class ResourceGenerator : MonoBehaviour
 
     void SpawnChest()
     {
-        Vector3 randomSpawnPosition = new Vector3(Random.Range(-70, -10), 2, Random.Range(-45, 40));
+        int square = Random.Range(1,4);
+        float xRandom;
+        float zRandom;
+        switch(square)
+        {
+            case 1:
+                xRandom = Random.Range(-44, -20);
+                zRandom = Random.Range(-44, -21);
+                break;
+            case 2:
+                xRandom = Random.Range(-62, -35);
+                zRandom = Random.Range(-27, -25);
+                break;
+            case 3:
+                xRandom = Random.Range(-26, -5);
+                zRandom = Random.Range(-17, 11);
+                break;
+            default:
+                xRandom = Random.Range(-9, -3);
+                zRandom = Random.Range(-11, -29);
+                break;
+        }
+        Vector3 randomSpawnPosition = new Vector3(xRandom, 2, zRandom);
         Instantiate(chestPrefab, randomSpawnPosition, Quaternion.Euler(-90,0,0));
     }
 }
