@@ -90,13 +90,13 @@ public class BadGuy : MonoBehaviour
 
     public void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("coll with friendly soldier");
-
+      
         if (collider.tag == "friendly_soldier")
         {
             isAttacking = true;
             m_Collider.enabled = false;
             animator.SetInteger("isAttacking", 1);
+            animator.SetInteger("isDying", 1);
         }
     }
 

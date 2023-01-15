@@ -6,7 +6,7 @@ public class NodeUI : MonoBehaviour
 {
 
     public GameObject ui;
-
+    
     private TileScript target;
 
     public void SetTarget(TileScript _target)

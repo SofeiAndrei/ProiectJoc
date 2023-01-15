@@ -111,3 +111,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HoverColor: {r: 0.1295835, g: 0.3018868, b: 0.1295835, a: 0.64705884}
+  positionOffset: {x: 0, y: 0, z: 0}
+  WrongHoverColor: {r: 0, g: 0, b: 0, a: 0}
+  balistaValue: 50
+  balistaMoneyUI: {fileID: 5297521207730173524, guid: 07d9ed3a77b68534bb0337ad796fa80e,
+    type: 3}
+  balista: {fileID: 0}
+  moneyUI: {fileID: 9180070050034716097, guid: 1dff9fe3bdfd9144fb8531337a3aaf4e, type: 3}
+  shopBlueprint:
+    prefab: {fileID: 0}
+    cost: 0
+    fireRateUpgradedPrefab: {fileID: 0}
+    rangeUpgradedPrefab: {fileID: 0}
+    bothUpgradedPrefab: {fileID: 0}
+    upgradeFireRateCost: 0
+    upgradeRangeCost: 0
+  fireRateIsUpgraded: 0
+  rangeIsUpgraded: 0

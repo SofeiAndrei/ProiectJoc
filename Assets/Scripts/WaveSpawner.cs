@@ -58,7 +58,6 @@ public class WaveSpawner : MonoBehaviour
                         SpawnFastEnemy();
                     }
                     yield return new WaitForSeconds(1f);
-                    Debug.Log(randomSpawner);
                 }
             }
         }

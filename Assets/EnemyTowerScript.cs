@@ -9,8 +9,7 @@ public class EnemyTowerScript : MonoBehaviour
     public HealthBar healthBar;
     public void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("coll");
-
+       
         if (collider.tag == "friendly_soldier")
         {
             health -= 1;

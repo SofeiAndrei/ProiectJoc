@@ -11,8 +11,7 @@ public class Tower : MonoBehaviour
     public Player player;
     public void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("coll");
-
+       
         if(collider.tag == "enemy")
         {
             health -= 1;

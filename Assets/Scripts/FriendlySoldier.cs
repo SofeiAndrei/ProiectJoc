@@ -57,13 +57,15 @@ public class FriendlySoldier : MonoBehaviour
 
     public IEnumerator OnTriggerEnter(Collider collider)
     {
-        Debug.Log("coll with enemy soldier");
-
+       
         if(collider.tag == "enemy")
         {
             isAttacking = true;
             animator.SetInteger("isAttacking", 1);
+            
             m_Collider.enabled = false;
+            yield return new WaitForSeconds(1.5f);
+            animator.SetInteger("isDying", 1);
             yield return new WaitForSeconds(1.5f);
             Die();
             Destroy(collider.gameObject);

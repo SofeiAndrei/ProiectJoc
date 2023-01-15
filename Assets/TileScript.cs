@@ -12,10 +12,12 @@ public class TileScript : MonoBehaviour
     private Renderer rend;
     private Color startColor;
     public int balistaValue = 50;
-   
+    public GameObject balistaMoneyUI;
     BuildManager buildManager;
+    BalistaMoney balistaMoney;
     [HideInInspector]
     public GameObject balista;
+    public GameObject moneyUI;
     [HideInInspector]
     public ShopBlueprint shopBlueprint;
     [HideInInspector]
@@ -28,6 +30,7 @@ public class TileScript : MonoBehaviour
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
         buildManager = BuildManager.instance;
+        balistaMoney = balistaMoneyUI.GetComponent<BalistaMoney>();
     }
 
     public Vector3 GetBuildPosition()
@@ -94,9 +97,14 @@ public class TileScript : MonoBehaviour
     public void SellBalista()
     {
         Currency.Money += balistaValue;
+
+        var _moneyUI = moneyUI.GetComponent<MoneyUI>();
+        _moneyUI.SoldBalista(balistaValue);
+
         GameObject effect = (GameObject)Instantiate(buildManager.sellEffect, GetBuildPosition(), Quaternion.identity);
         Destroy(effect, 5f);
         Destroy(balista);
+
         //blueprint = null;
 
     }
@@ -123,6 +131,8 @@ public class TileScript : MonoBehaviour
         balistaValue += 50;
         Currency.Money -= shopBlueprint.upgradeFireRateCost;
 
+        balistaMoney.BalistaUpgraded(balistaValue);
+     
         //Sterge balista veche
         Destroy(balista);
 
@@ -167,6 +177,8 @@ public class TileScript : MonoBehaviour
         balistaValue += 50;
         Currency.Money -= shopBlueprint.upgradeRangeCost;
 
+        balistaMoney.BalistaUpgraded(balistaValue);
+      
         //Sterge balista veche
         Destroy(balista);
 
