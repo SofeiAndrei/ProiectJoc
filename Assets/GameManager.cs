@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         }
         //to toggle the game over screen for easier testing 
 
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown("escape"))
         {
             EndGame();
         }
